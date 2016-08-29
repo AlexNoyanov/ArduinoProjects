@@ -17,6 +17,11 @@ int lup = 12;
 int up = 13;
 
 // Functions:
+
+// TEST
+// TEST
+TEST
+
 void One()
 {
     digitalWrite(rup,LOW);
