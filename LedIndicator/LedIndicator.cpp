@@ -18,10 +18,6 @@ int up = 13;
 
 // Functions:
 
-// TEST
-// TEST
-// TEST
-
 void One()
 {
     digitalWrite(rup,LOW);
@@ -51,8 +47,6 @@ void Four()
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
 }
-
-/// FIVE
 
 void Five()
 {
