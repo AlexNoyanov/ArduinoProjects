@@ -17,11 +17,13 @@ int lup = 12;
 int up = 13;
 
 // Functions:
-void One(){
+void One()
+{
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
-void Two(){
+void Two()
+{
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
@@ -29,28 +31,32 @@ void Two(){
     digitalWrite(dwn,LOW);
 }
 
-void Three(){
+void Three()
+{
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Four(){
+void Four()
+{
     digitalWrite(rup,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
 }
 
-void Five(){
+void Five()
+{
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Six(){
+void Six()
+{
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
@@ -58,12 +64,14 @@ void Six(){
     digitalWrite(ldwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Seven(){
+void Seven()
+{
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(up,LOW);
 }
-void Eight(){
+void Eight()
+{
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
@@ -80,7 +88,8 @@ void Nine(){
     digitalWrite(dwn,LOW);
     digitalWrite(rup,LOW);
 }
-void Zero(){
+void Zero()
+{
     digitalWrite(lup,LOW);
     digitalWrite(ldwn,LOW);
     digitalWrite(rdwn,LOW);
