@@ -17,6 +17,9 @@ int lup = 12;
 int up = 13;
 
 // Functions:
+
+
+
 void One()
 {
     digitalWrite(rup,LOW);
@@ -46,6 +49,8 @@ void Four()
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
 }
+
+/// FIVE
 
 void Five()
 {
