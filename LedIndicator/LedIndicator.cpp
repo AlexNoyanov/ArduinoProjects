@@ -28,13 +28,11 @@ int NS = 100;
 
 // Functions:
 
-void One()
-{
+void One() {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
-void Two()
-{
+void Two() {
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
@@ -42,16 +40,14 @@ void Two()
     digitalWrite(dwn,LOW);
 }
 
-void Three()
-{
+void Three() {
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Four()
-{
+void Four() {
     digitalWrite(rup,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
