@@ -29,24 +29,29 @@ int NS = 100;
 // Functions:
 
 // this function number 1
-void One() {
+void One()
+{
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
 // this function number 2
-void Two() {
+void Two()
+{
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(ldwn,LOW);
-    digitalWrite(dwn,LOW);}
+    digitalWrite(dwn,LOW);
+}
 
-void Three() {
+void Three()
+{
     digitalWrite(up,LOW);
     digitalWrite(rup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
-    digitalWrite(dwn,LOW);}
+    digitalWrite(dwn,LOW);
+}
 void Four()
 {
     digitalWrite(rup,LOW);
