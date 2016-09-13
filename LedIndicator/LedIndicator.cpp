@@ -22,7 +22,8 @@ int up = 13;
 
 
 // corrcted by Sasha
-int S = 200;
+int S = 150;
+int NS = 100;
 
 
 // Functions:
