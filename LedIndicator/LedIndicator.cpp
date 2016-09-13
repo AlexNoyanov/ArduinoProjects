@@ -16,6 +16,10 @@ int ldwn =11;
 int lup = 12;
 int up = 13;
 
+
+// corrcted by Sasha
+int S = 100;
+
 // Functions:
 
 void One()
