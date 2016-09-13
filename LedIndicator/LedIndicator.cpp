@@ -54,16 +54,14 @@ void Four()
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);}
 
-void Five()
-{
+void Five() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Six()
-{
+void Six() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
@@ -71,14 +69,12 @@ void Six()
     digitalWrite(ldwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Seven()
-{
+void Seven() {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(up,LOW);
 }
-void Eight()
-{
+void Eight() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
