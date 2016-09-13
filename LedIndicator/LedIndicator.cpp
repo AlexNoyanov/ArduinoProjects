@@ -28,11 +28,13 @@ int NS = 100;
 
 // Functions:
 
+// this function number 1
 void One()
 {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
+// this function number 2
 void Two()
 {
     digitalWrite(up,LOW);
