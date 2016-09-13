@@ -7,6 +7,10 @@
 
 #include "LedIndicator.h"
 
+// This was corrected by Natasha
+int N = 0;
+
+
 //  Pins:
 int rup = 6;
 int rdwn = 5;
