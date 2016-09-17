@@ -22,16 +22,19 @@ int up = 13;
 
 
 // corrcted by Sasha
-int S = 100;
+int S = 150;
+int NS = 100;
 
 
 // Functions:
 
+// this function number 1
 void One()
 {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
+// this function number 2
 void Two()
 {
     digitalWrite(up,LOW);
@@ -54,19 +57,16 @@ void Four()
     digitalWrite(rup,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
-    digitalWrite(rdwn,LOW);
-}
+    digitalWrite(rdwn,LOW);}
 
-void Five()
-{
+void Five() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Six()
-{
+void Six() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
@@ -74,14 +74,12 @@ void Six()
     digitalWrite(ldwn,LOW);
     digitalWrite(dwn,LOW);
 }
-void Seven()
-{
+void Seven() {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
     digitalWrite(up,LOW);
 }
-void Eight()
-{
+void Eight() {
     digitalWrite(up,LOW);
     digitalWrite(lup,LOW);
     digitalWrite(mdl,LOW);
