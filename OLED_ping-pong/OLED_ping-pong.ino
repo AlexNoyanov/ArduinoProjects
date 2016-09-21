@@ -1,16 +1,15 @@
 
 //  PING_PONG GAME FOR I2C OLED DISPLAY
-//  Connect Potenciometer to the A0 pin
 //  By Alexander Noyanov
 //  15 August 2016 - 17 August 2016
 
 // Just connect Potenciometer to the A0 pin
 //  and I2c OLED display to the SDA and SCL pins
-// 
+// If you want music when connect buzzer to the 8 pin
 
 // Initializing display:
 #include <OLED_I2C.h> // OLED Library
-#include <OzOLED.h>   // OLED Library with numbers
+#include <OzOLED.h>   // OLED Library for numbers
 //#include <Wire.h>
 OLED  myOLED(SDA, SCL, 8); 
 
@@ -18,11 +17,11 @@ extern uint8_t MediumNumbers[]; // Medium numbers
 extern uint8_t SmallFont[];     // Small Font
 
 // Integers:
-int  pot = 0; // Potenciometer value
-const byte ypin = A0; // Potenciometer connection pin
+int  pot = 0;            // Potenciometer value
+const byte ypin = A0;    // Potenciometer connection pin
 // Screen parameters:
-const int xmax = 128; // maximim display size x
-const int ymax = 64;  // maximum display size y
+const int xmax = 128;    // maximim display size x
+const int ymax = 64;     // maximum display size y
 const int maxScore = 10; // Maximum Scores
 int racketY;    // Racket Y-coordinate from Potenciometer
 int comp;
@@ -61,9 +60,23 @@ void Beep(int friq, int tme) {
   noTone(buzPin);
   delay(tme);
 }
+
 //    === MUSIC ===
   // Winning Song:
   void MusicWin(){
+
+   for(int fr = 500; fr<= 1000; fr=fr+100){
+    Beep(fr+friqPlus,10);
+      
+    }
+   for(int fr = 1000; fr>= 500; fr=fr-100){
+    Beep(fr+friqPlus,10);
+      
+    }
+    
+    Beep(100+friqPlus,500);
+    Beep(500+friqPlus,100);
+    /*
     Beep(100+friqPlus,500);
     Beep(500+friqPlus,100);
     Beep(100+friqPlus,100);
@@ -74,6 +87,7 @@ void Beep(int friq, int tme) {
     Beep(800+friqPlus,100);
     Beep(1500+friqPlus,100);
     Beep(100+friqPlus,100);
+    */
   }
 
   // Losing Song:
@@ -298,19 +312,19 @@ void loop()
 
   // If Ball bounce on the wall:
   if (ballX > xmax - ballSize) { // On the Right
-    Beep(500, 10);          // Sound
-    Beep(250, 10);          // Sound
-    Beep(125, 10);          // Sound
+    Beep(500, 20);          // Sound
+    Beep(250, 20);          // Sound
+    Beep(125, 20);          // Sound
     ballX = xmax - ballSize; // Change ball coordinate to normal
-    vx = -vx;                //
+    vx = -vx;                // Change ball velocity
     playerScore++;
   }
   if (ballX <= 0 + ballSize ) { // On the Left
-    Beep(500, 10);          // Sound
-    Beep(250, 10);          // Sound
-    Beep(125, 10);          // Sound
+    Beep(500, 20);          // Sound
+    Beep(250, 20);          // Sound
+    Beep(125, 20);          // Sound
     ballX = 0 + ballSize;   // Change ball coordinate to normal
-    vx = -vx;
+    vx = -vx;               // Change ball velocity
     compScore++;            // Plus 1 Score to the computer
     // ballX = ballX + vx;
   }
@@ -335,13 +349,13 @@ void loop()
     vy = vymax - 1;
 
   if (ballY > ymax - ballSize) { // Down
-    Beep(100, 10);          // Sound
+    Beep(100, 20);               // Sound
     ballY = ymax - ballSize;
     vy = -vy;
     ballY = ballY + vy;
   }
   if (ballY <= 0 + ballSize) { // Up
-    Beep(100, 10);            // Sound
+    Beep(100, 20);             // Sound
     ballY = 0 + ballSize;
     vy = -vy;
     // ballY = ballY + vy;

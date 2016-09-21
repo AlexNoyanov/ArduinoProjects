@@ -7,9 +7,6 @@
 
 #include "LedIndicator.h"
 
-// This was corrected by Natasha
-int N = 0;
-
 
 //  Pins:
 int rup = 6;
@@ -24,7 +21,6 @@ int up = 13;
 // corrcted by Sasha
 int S = 150;
 int NS = 100;
-
 
 // Functions:
 
@@ -225,6 +221,7 @@ void PinsOut(){
     pinMode(rdwn,OUTPUT);
 }
 
+// Use this function for printing numbers:
 void PrintNum(int i)
 {
         
