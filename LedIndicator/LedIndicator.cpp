@@ -17,20 +17,15 @@ int ldwn =11;
 int lup = 12;
 int up = 13;
 
-
-// corrcted by Sasha
-int S = 150;
-int NS = 100;
-
 // Functions:
 
-// this function number 1
+// Numbers
 void One()
 {
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
 }
-// this function number 2
+
 void Two()
 {
     digitalWrite(up,LOW);
@@ -101,7 +96,7 @@ void Zero()
     digitalWrite(dwn,LOW);
     digitalWrite(up,LOW);
 }
-
+// For Symbols:
 void Off(){
     digitalWrite(rup,HIGH);
     digitalWrite(rdwn,HIGH);
