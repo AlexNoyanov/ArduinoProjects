@@ -128,6 +128,14 @@ void C(){
     digitalWrite(dwn,LOW);
 }
 
+void E(){
+    digitalWrite(lup,LOW);
+    digitalWrite(ldwn,LOW);
+    digitalWrite(mdl,LOW);
+    digitalWrite(up,LOW);
+    digitalWrite(dwn,LOW);
+}
+
 void d(){
     digitalWrite(rup,LOW);
     digitalWrite(rdwn,LOW);
@@ -148,13 +156,7 @@ void H(){
     digitalWrite(lup,LOW);
     digitalWrite(ldwn,LOW);
 }
-void E(){
-    digitalWrite(lup,LOW);
-    digitalWrite(ldwn,LOW);
-    digitalWrite(mdl,LOW);
-    digitalWrite(up,LOW);
-    digitalWrite(dwn,LOW);
-}
+
 
 void f(){
     digitalWrite(up,LOW);
