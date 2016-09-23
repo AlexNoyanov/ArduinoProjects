@@ -58,7 +58,7 @@ int buttonPin = 3;
 void setup() {
 // Make indicator pins in OUTPUT mode:
 PinsOut();
-// Buttonb pin mode:
+// Buton pin mode:
 pinMode(buttonPin,OUTPUT);
 // Turn OFF all segments:
 Off();
@@ -68,9 +68,9 @@ void loop() {
 if(digitalRead(buttonPin)==HIGH){
 // Let's print all numbers:
 for(int n=9;n>=0;n--){
-  PrintNum(n);
-delay(spd); // Waitind 
-Off();      // Turn Off
+  PrintNum(n); // Print number 
+delay(spd);    // Waitind 
+Off();         // Turn Off
 delay(spd);
    }
   }else{
