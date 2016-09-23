@@ -6,29 +6,29 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-LedIndicator		KEYWORD1
+LedIndicator		  KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
 
-H		KEYWORD2
-L		KEYWORD2
-P	        KEYWORD2
-U	        KEYWORD2
-oUp	        KEYWORD2
-oDn	        KEYWORD2
-PinsOut	        KEYWORD2
-A	        KEYWORD2
-b	        KEYWORD2
-C        	KEYWORD2
-d		KEYWORD2
-E              KEYWORD2
-f	        KEYWORD2
-G	        KEYWORD2
-J	        KEYWORD2
-Off	        KEYWORD2
-PrintNum       KEYWORD2
+H		 	KEYWORD2
+L		 	KEYWORD2
+P	      	 	KEYWORD2
+U	      	 	KEYWORD2
+oUp	       	 	KEYWORD2
+oDn	      	 	KEYWORD2
+PinsOut	       	 	KEYWORD2
+A	      	 	KEYWORD2
+b	      	 	KEYWORD2
+C               	KEYWORD2
+d               	KEYWORD2
+E               	KEYWORD2
+f	      	 	KEYWORD2
+G	      	 	KEYWORD2
+J	      	 	KEYWORD2
+Off	      	 	KEYWORD2
+PrintNum     	 	KEYWORD2
 
 
 #######################################
