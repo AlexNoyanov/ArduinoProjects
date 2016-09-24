@@ -5,6 +5,8 @@
 //  20 May 2016
 //  =========================
 //  Mail: alex.noyanov@gmail.com
+
+// Version : 1.0
 /*    7-SEGMENT INDICATOR 
  *     CONNECTING SCHEME:     
  *    _______________
@@ -32,70 +34,54 @@
  *    RUP --> 6
  *    RDN --> 5
  *    
- *    OTHER SYMBOLS: A,C,E,F,G,H,I(use1),O(use0),L,P
+ *    OTHER SYMBOLS: A,b,C,E,F,G,H,I(use1),J,L,O(use0),P
  *    1,2,3,4,5,6,7,8,9,0
  */
+ 
 // Library:
-#include<LedIndicator.h>
+#include<LedIndicator.h> 
 
-// Speed:
-int spd = 500;
+ int spd = 500;  // Speed
+  
 void setup() {
-  // put your setup code here, to run once:
-// Make indicator pins in OUTPUT mode:
-PinsOut();
-// Turn OFF all segments:
-Off();
+  PinsOut();      // Set indicator pins as OUTPUT
+  Off();          // Turn OFF ingicator
 }
 
-
-//typedef void (*printFunc)(void);
-//printFunc printFuncts[] = { One, Two, Three };
-
 void loop() {
-
-oUp();
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
-
-oDn();
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
 
 // Let's print all numbers:
 for(int n=0;n<=9;n++){
   PrintNum(n);
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
-}
+  delay(spd);   // Waitind 
+  Off();        // Turn Off
+  delay(spd);   // Waiting
+  }
 
 // Now lets's print "H" "E" "L" "L" "O" 
-H();        // Turn On H
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
+  H();          // Print "H"
+  delay(spd);   // Waiting
+  Off();        // Turn Off
+  delay(spd);   // Waiting
 
-E();
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
+  E();          // Print "E"
+  delay(spd);   // Waiting 
+  Off();        // Turn Off
+  delay(spd);   // Waiting
 
-L();
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
+  L();          // Print "L"
+  delay(spd);   // Waiting 
+  Off();        // Turn Off
+  delay(spd);   // Waiting
 
-L();
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
+  L();          // Print "l" again
+  delay(spd);   // Waiting 
+  Off();        // Turn Off
+  delay(spd);
 
-PrintNum(0);
-delay(spd); // Waitind 
-Off();      // Turn Off
-delay(spd);
+  O();          // Print "O"
+  delay(spd);   // Waitindg
+  Off();        // Turn Off
+  delay(spd);   // Waiting
 
 }
