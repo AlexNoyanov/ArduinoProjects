@@ -9,13 +9,13 @@
 
 
 //  Pins:
-int rup = 6;
+int rup  = 6;
 int rdwn = 5;
-int dwn = 4;
-int mdl = 7;
-int ldwn =11;
-int lup = 12;
-int up = 13;
+int dwn  = 4;
+int mdl  = 7;
+int ldwn = 11;
+int lup  = 12;
+int up   = 13;
 
 // Functions:
 
@@ -128,6 +128,13 @@ void C(){
     digitalWrite(dwn,LOW);
 }
 
+void d(){
+    digitalWrite(rup,LOW);
+    digitalWrite(rdwn,LOW);
+    digitalWrite(mdl,LOW);
+    digitalWrite(dwn,LOW);
+}
+
 void E(){
     digitalWrite(lup,LOW);
     digitalWrite(ldwn,LOW);
@@ -135,28 +142,6 @@ void E(){
     digitalWrite(up,LOW);
     digitalWrite(dwn,LOW);
 }
-
-void d(){
-    digitalWrite(rup,LOW);
-    digitalWrite(rdwn,LOW);
-    digitalWrite(mdl,LOW);
-    digitalWrite(dwn,LOW);
-}
-void P(){
-    digitalWrite(lup,LOW);
-    digitalWrite(ldwn,LOW);
-    digitalWrite(up,LOW);
-    digitalWrite(mdl,LOW);
-    digitalWrite(rup,LOW);
-}
-void H(){
-    digitalWrite(rup,LOW);
-    digitalWrite(rdwn,LOW);
-    digitalWrite(mdl,LOW);
-    digitalWrite(lup,LOW);
-    digitalWrite(ldwn,LOW);
-}
-
 
 void f(){
     digitalWrite(up,LOW);
@@ -174,6 +159,14 @@ void G(){
     
 }
 
+void H(){
+    digitalWrite(rup,LOW);
+    digitalWrite(rdwn,LOW);
+    digitalWrite(mdl,LOW);
+    digitalWrite(lup,LOW);
+    digitalWrite(ldwn,LOW);
+}
+
 void J(){
     digitalWrite(rdwn,LOW);
     digitalWrite(rup,LOW);
@@ -184,6 +177,14 @@ void L(){
     digitalWrite(lup,LOW);
     digitalWrite(ldwn,LOW);
     digitalWrite(dwn,LOW);
+}
+
+void P(){
+    digitalWrite(lup,LOW);
+    digitalWrite(ldwn,LOW);
+    digitalWrite(up,LOW);
+    digitalWrite(mdl,LOW);
+    digitalWrite(rup,LOW);
 }
 
 void U(){
