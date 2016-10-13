@@ -33,17 +33,12 @@ void setup() {
 
 void loop() {
 //  For example:
-FWD();            // Move Forward
-delay(tme);       // Waiting
-STP();
-RGT();          
-delay(tme);
-FWD();
-delay(tme);
-LFT();
-delay(tme);
-BCK();
-delay(tme);
-STP();
-delay(tme);
+FWD(200);            // Move Forward
+STP(500);            // Stop and waiting 
+RGT(100);            // Turn Right
+FWD(200);            // Move Forvard
+LFT(100);            // Turn Left
+BCK(200);            // Move Back
+STP(100);
+delay(1000); // Waiting a second
 }
