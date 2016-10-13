@@ -6,7 +6,6 @@
 //  =========================
 //  Mail: alex.noyanov@gmail.com
 
-// Version : 1.0
 /*    7-SEGMENT INDICATOR 
  *     CONNECTING SCHEME:     
  *    _______________
@@ -80,6 +79,18 @@ for(int n=0;n<=9;n++){
   delay(spd);
 
   O();          // Print "O"
+  delay(spd);   // Waitindg
+  Off();        // Turn Off
+  delay(spd);   // Waiting
+
+  delay(2000); // Delay 2 seconds
+  
+  oUp();        // Small "o" up
+  delay(spd);   // Waitindg
+  Off();        // Turn Off
+  delay(spd);   // Waiting
+
+  oDn();        // Small "o" down
   delay(spd);   // Waitindg
   Off();        // Turn Off
   delay(spd);   // Waiting
