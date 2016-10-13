@@ -32,10 +32,11 @@ void setup() {
 }
 
 void loop() {
-//  Simple exaple code:
-FWD();
-delay(tme);
-RGT();
+//  For example:
+FWD();            // Move Forward
+delay(tme);       // Waiting
+STP();
+RGT();          
 delay(tme);
 FWD();
 delay(tme);
