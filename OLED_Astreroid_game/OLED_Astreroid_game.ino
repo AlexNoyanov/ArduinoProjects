@@ -1,3 +1,8 @@
+//  Arduino Asteroid Game with OLED display
+// Created by Alexander Noyanov
+// 18 10 2016
+
+// For help: alex.noyanov@gmail.com
 #include <OLED_I2C.h>
 
 OLED  myOLED(SDA, SCL, 8);
