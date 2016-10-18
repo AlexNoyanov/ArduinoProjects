@@ -12,14 +12,17 @@ int pixX;
 int pixY;
 int flameR = 8;
 int potValue;
-int intensFire = 10;
-int astR = 5;
+int intensFire = 10;  // Fire pixel concentration 
+int astR = 5;         // Asteroid radius 
 int minastR = 2;
 int maxastR = 10;
 int astPixX;
 int astPixY;
-int astPixConcent = 15;
-
+int astPixConcent = 20; // Pixels concentration inside the asteroid
+int rOut = 5;
+int astX ;
+int astY = 20;
+int astSpd = 2;       // Asteroid speed
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -45,11 +48,12 @@ void drawFlame(int x,int y){
  void Asteroid(int x,int y){
   //astR = random(minastR,maxastR);
   myOLED.drawCircle(x,y,astR);
-    for(int i = 0;i< astPixConcent; i++){
-  astPixX = random(x-astR,x+astR);
-  astPixY = random(y-astR,y+astR);
-  myOLED.setPixel(astPixX,astPixY);
-  }
+//    for(int i = 0;i< astPixConcent; i++){ // Pixels all around asteroid
+//  astPixX = random(x-2*astR,x+2*astR);
+//  astPixY = random(y-2*astR,y+2*astR);
+//  myOLED.setPixel(astPixX,astPixY);
+//  }
+//    myOLED.drawCircle(x+rOut,y+rOut,astR);
  }
  
 void setup() {
@@ -66,7 +70,14 @@ void loop() {
    y = map(potValue,0,1023,4,64-rocketHight-4);
    drawRocket(x,y);
    drawFlame(x,y);
-   Asteroid(60,30);
+    if(astX > 0-astR){
+      Asteroid(astX,astY);
+      astX = astX-astSpd;
+       }else{
+        astX = 128+astR;
+       }
    myOLED.update();
+   
+   
    delay(10);
 }
