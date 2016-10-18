@@ -13,9 +13,14 @@ int pixY;
 int flameR = 8;
 int potValue;
 int intensFire = 10;
-int astR;
+int astR = 5;
 int minastR = 2;
 int maxastR = 10;
+int astPixX;
+int astPixY;
+int astPixConcent = 15;
+
+
 // Function for drawing rocket:
 void drawRocket(int x,int y){
   myOLED.drawRect(x,y,x+rocketLenght,y+rocketHight);
@@ -38,9 +43,13 @@ void drawFlame(int x,int y){
  }
 
  void Asteroid(int x,int y){
-  astR = random(minastR,maxastR);
+  //astR = random(minastR,maxastR);
   myOLED.drawCircle(x,y,astR);
-  
+    for(int i = 0;i< astPixConcent; i++){
+  astPixX = random(x-astR,x+astR);
+  astPixY = random(y-astR,y+astR);
+  myOLED.setPixel(astPixX,astPixY);
+  }
  }
  
 void setup() {
@@ -57,7 +66,7 @@ void loop() {
    y = map(potValue,0,1023,4,64-rocketHight-4);
    drawRocket(x,y);
    drawFlame(x,y);
-   //Asteroid(60,30);
+   Asteroid(60,30);
    myOLED.update();
    delay(10);
 }
