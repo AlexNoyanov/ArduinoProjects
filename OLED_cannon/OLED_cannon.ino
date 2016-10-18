@@ -87,14 +87,15 @@ void drawHouse(int x,int y){
 }
 
 void setup() {
+  //analogWrite(A2,1023);
   Serial.begin(9600);// Serial port speed (for testing)
   myOLED.begin();   // Setup OLED
   myOLED.clrScr();  // Clear screen
   pinMode(buttonPin,INPUT); // Set button pin as INPUT
   drawHouse(90,60);          // Draw Block
   drawHouse(90,50);          // Draw Block
-   drawHouse(100,60);          // Draw Block
- drawCannon(3);
+  drawHouse(100,60);          // Draw Block
+  drawCannon(3);
 }
 
 void loop() 
