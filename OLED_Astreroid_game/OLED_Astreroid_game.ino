@@ -2,22 +2,22 @@
 
 OLED  myOLED(SDA, SCL, 8);
 
-int rocketLenght = 10;
-int rocketHight = 5;
-int maxX = 128;
-int maxY = 64;
-int y;
-int x = 8;
+int rocketLenght = 10;  // Rocket body Length 
+int rocketHight = 5;    // Rocket body Hight
+int maxX = 128;         // Maximum X-value
+int maxY = 64;          // Maximum Y-value
+int y;                  // Rocket Y-coordinate
+int x = 8;              // Rocket X-coordinate
 int pixX;
 int pixY;
-int flameR = 8;
+int flameR = 8;         // Flame radius  
 int potValue;
-int intensFire = 10;  // Fire pixel concentration 
-int astR = 5;         // Asteroid radius 
+int intensFire = 10;    // Fire pixel concentration 
+int astR = 5;          // Asteroid radius 
 int minastR = 2;
 int maxastR = 10;
-int astPixX;
-int astPixY;
+//int astPixX;
+//int astPixY;
 int astPixConcent = 20; // Pixels concentration inside the asteroid
 int rOut = 5;
 int astX ;
@@ -27,7 +27,7 @@ int astSpd = 2;       // Asteroid speed
 // Function for drawing rocket:
 void drawRocket(int x,int y){
   myOLED.drawRect(x,y,x+rocketLenght,y+rocketHight);
-  myOLED.drawLine(x+rocketLenght,y+rocketHight,x+rocketLenght+5,y+rocketHight/2);
+  myOLED.drawLine(x+rocketLenght,y+rocketHight,x+rocketLenght+5,y+rocketHight/2); 
   myOLED.drawLine(x+rocketLenght,y,x+rocketLenght+5,y+rocketHight/2);
   myOLED.drawLine(x+5,y+rocketHight,x-2,y+8); // Down 
   myOLED.drawLine(x,y+rocketHight,x-2,y+8);
@@ -70,14 +70,18 @@ void loop() {
    y = map(potValue,0,1023,4,64-rocketHight-4);
    drawRocket(x,y);
    drawFlame(x,y);
+   // Movung the Asteroid:
     if(astX > 0-astR){
       Asteroid(astX,astY);
       astX = astX-astSpd;
        }else{
+        astY = random(astR,64-astR);
         astX = 128+astR;
        }
+       // Asteroid with rocket:
+       //if(astX-astR < x+rocketLenght+5 && y)
    myOLED.update();
    
    
-   delay(10);
+   //delay(10); // System delay
 }
