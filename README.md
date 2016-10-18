@@ -1,3 +1,3 @@
 # ArduinoProjects
-Move this projects to the Arduino folder
-Created by Alexander Noyanov
+This projects created by Alexander Noyanov. 
+Move it to the Arduino folder
