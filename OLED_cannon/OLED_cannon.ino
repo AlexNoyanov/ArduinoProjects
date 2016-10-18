@@ -37,6 +37,7 @@ const int bombRad = 2;      // Bomb radius
     double vx = v;
     double vy = v;
     double g = 0.01;
+    
 //  Functions:
 void angle(double ADeg, double R, int& x2, int& y2) // Mathematical function for converting degrees to the radians
 {
