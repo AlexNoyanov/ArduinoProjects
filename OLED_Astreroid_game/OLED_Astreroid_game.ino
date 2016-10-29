@@ -124,6 +124,8 @@ void loop() {
         score = 0;
         delay(500);
         myOLED.print("GAME OVER ", 30, 20);
+        myOLED.print("YOUR SCORE: ", 30, 30);
+        myOLED.printNumI(score, 100, 30);
         myOLED.update();
         delay(1000);
        }
