@@ -28,6 +28,11 @@ int rOut = 5;
 int astX ;
 int astY = 20;
 int astSpd = 2;       // Asteroid speed
+int score = 0;
+int pixExpX;         //  Explosion coordinate X
+int pixExpY;         //  Explsion coordinate Y
+int explosionIntetsivity = 10;
+int explosionR = 15;
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -52,7 +57,9 @@ void drawFlame(int x,int y){
 
  void Asteroid(int x,int y){
   //astR = random(minastR,maxastR);
+  //for(int i = 0; i < astR;i++){
   myOLED.drawCircle(x,y,astR);
+ // }
 //    for(int i = 0;i< astPixConcent; i++){ // Pixels all around asteroid
 //  astPixX = random(x-2*astR,x+2*astR);
 //  astPixY = random(y-2*astR,y+2*astR);
@@ -60,6 +67,20 @@ void drawFlame(int x,int y){
 //  }
 //    myOLED.drawCircle(x+rOut,y+rOut,astR);
  }
+
+ void Explosion(int x, int y){
+  for(int i = 0; i < explosionIntetsivity; i++){
+    //myOLED.drawCircle(x,y,i);
+      pixExpX = random(x,x+explosionR);
+      pixExpY = random(y-explosionR,y+explosionR);
+      myOLED.setPixel(pixExpX,pixExpY);
+      myOLED.setPixel(pixExpX+1,pixExpY);
+      myOLED.setPixel(pixExpX,pixExpY+1);
+  //myOLED.drawCircle(x+2*i,y,i);
+      myOLED.update();
+  }
+ }
+
  
 void setup() {
   // put your setup code here, to run once:
@@ -84,7 +105,21 @@ void loop() {
         astX = 128+astR;
        }
        // Asteroid with rocket:
-       //if(astX-astR < x+rocketLenght+5 && y)
+       if(astX-astR < x+rocketLenght+5 && astY < y+rocketHight+5 && astY > y-rocketHight-5){
+           myOLED.clrScr();
+           drawRocket(x,y);
+           for(int i = astX; i > 0; i--){
+            Asteroid(i,astY);
+            myOLED.update();
+            myOLED.clrCircle(i, astY, astR);
+           }
+           Explosion(x,y);
+        astY = random(astR,64-astR);
+        astX = 128+astR;
+        delay(1000);
+       }
+
+       
    myOLED.update();
    
    
