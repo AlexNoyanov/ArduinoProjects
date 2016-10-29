@@ -7,10 +7,10 @@
 
 OLED  myOLED(SDA, SCL, 8);
 
-int rocketLenght = 10;  // Rocket body Length 
-int rocketHight = 5;    // Rocket body Hight
-int maxX = 128;         // Maximum X-value
-int maxY = 64;          // Maximum Y-value
+const int rocketLenght = 10;  // Rocket body Length 
+const int rocketHight = 5;    // Rocket body Hight
+const int maxX = 128;         // Maximum X-value
+const int maxY = 64;          // Maximum Y-value
 int y;                  // Rocket Y-coordinate
 int x = 8;              // Rocket X-coordinate
 int pixX;
@@ -21,9 +21,7 @@ int intensFire = 10;    // Fire pixel concentration
 int astR = 5;          // Asteroid radius 
 int minastR = 2;
 int maxastR = 10;
-//int astPixX;
-//int astPixY;
-int astPixConcent = 20; // Pixels concentration inside the asteroid
+const int astPixConcent = 20; // Pixels concentration inside the asteroid
 int rOut = 5;
 int astX ;
 int astY = 20;
@@ -33,6 +31,7 @@ int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
 int explosionR = 15;
+
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -81,10 +80,13 @@ void drawFlame(int x,int y){
   }
  }
 
+
+  extern uint8_t SmallFont[];
  
 void setup() {
   // put your setup code here, to run once:
   myOLED.begin();
+  myOLED.setFont(SmallFont);
   analogWrite(A1,1023);
   analogWrite(A2,0);
 }
@@ -94,8 +96,10 @@ void loop() {
    myOLED.clrScr();
    potValue = analogRead(A0);
    y = map(potValue,0,1023,4,64-rocketHight-4);
-   drawRocket(x,y);
+   
+   drawRocket(x,y);   // Drawing rocket
    drawFlame(x,y);
+   
    // Movung the Asteroid:
     if(astX > 0-astR){
       Asteroid(astX,astY);
@@ -103,6 +107,7 @@ void loop() {
        }else{
         astY = random(astR,64-astR);
         astX = 128+astR;
+        score++;
        }
        // Asteroid with rocket:
        if(astX-astR < x+rocketLenght+5 && astY < y+rocketHight+5 && astY > y-rocketHight-5){
@@ -116,10 +121,14 @@ void loop() {
            Explosion(x,y);
         astY = random(astR,64-astR);
         astX = 128+astR;
+        score = 0;
+        delay(500);
+        myOLED.print("GAME OVER ", 30, 20);
+        myOLED.update();
         delay(1000);
        }
 
-       
+   myOLED.printNumI(score, 30, 5); 
    myOLED.update();
    
    
