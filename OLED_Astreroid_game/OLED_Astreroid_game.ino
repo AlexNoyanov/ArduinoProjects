@@ -24,14 +24,14 @@ int maxastR = 10;
 const int astPixConcent = 20; // Pixels concentration inside the asteroid
 int rOut = 5;
 int astX ;
-int astY = 20;
-int astSpd = 2;       // Asteroid speed
-int score = 0;
+int astY ;           
+int astSpd = 2;      // Asteroid speed
+int score = 0;       // Game score
 int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
 int explosionR = 15;
-
+int record = 0;
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -99,6 +99,8 @@ void loop() {
    
    drawRocket(x,y);   // Drawing rocket
    drawFlame(x,y);
+
+astSpd = map(score,0,100,2,10 );
    
    // Movung the Asteroid:
     if(astX > 0-astR){
@@ -121,16 +123,24 @@ void loop() {
            Explosion(x,y);
         astY = random(astR,64-astR);
         astX = 128+astR;
-        score = 0;
         delay(500);
         myOLED.print("GAME OVER ", 30, 20);
-        myOLED.print("YOUR SCORE: ", 30, 30);
-        myOLED.printNumI(score, 100, 30);
+        if(score > record){
+          myOLED.print("NEW RECORD!", 30, 40);
+          myOLED.printNumI(score, 60, 50);
+          record = score;
+        }else{
+          myOLED.print("YOUR SCORE: ", 30, 30);
+          myOLED.printNumI(score, 100, 30);
+          myOLED.print("RECORD", 30, 50);
+          myOLED.printNumI(record, 80, 50);
+        }
+        score = 0;
         myOLED.update();
-        delay(1000);
+        delay(2000);
        }
 
-   myOLED.printNumI(score, 30, 5); 
+   myOLED.printNumI(score, 30, 2); 
    myOLED.update();
    
    
