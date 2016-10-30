@@ -2,6 +2,8 @@
 // Created by Alexander Noyanov
 // 18 10 2016
 
+// Connect OLED 
+
 // For help: alex.noyanov@gmail.com
 #include <OLED_I2C.h>
 
@@ -11,14 +13,14 @@ const int rocketLenght = 10;  // Rocket body Length
 const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
-int y;                  // Rocket Y-coordinate
-int x = 8;              // Rocket X-coordinate
-int pixX;
-int pixY;
-int flameR = 8;         // Flame radius  
+int y;                        // Rocket Y-coordinate
+int x = 8;                    // Rocket X-coordinate
+int pixX;                     // Pixel coordinate X
+int pixY;                     // Pixel coordinate Y
+int flameR = 8;               // Flame radius  
 int potValue;
 int intensFire = 10;    // Fire pixel concentration 
-int astR = 5;          // Asteroid radius 
+int astR = 5;           // Asteroid radius 
 int minastR = 2;
 int maxastR = 10;
 const int astPixConcent = 20; // Pixels concentration inside the asteroid
@@ -27,11 +29,11 @@ int astX ;
 int astY ;           
 int astSpd = 2;      // Asteroid speed
 int score = 0;       // Game score
+int record = 0;      // Game record 
 int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
 int explosionR = 15;
-int record = 0;
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -102,7 +104,7 @@ void loop() {
 
 astSpd = map(score,0,100,2,10 );
    
-   // Movung the Asteroid:
+   // Moving the Asteroid:
     if(astX > 0-astR){
       Asteroid(astX,astY);
       astX = astX-astSpd;
