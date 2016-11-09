@@ -122,6 +122,7 @@ astSpd = map(score,0,100,2,10 );
       Asteroid(astX,astY);
       astX = astX-astSpd;
        }else{
+        musicScore();
         astY = random(astR,64-astR);
         astX = 128+astR;
         score++;
