@@ -13,6 +13,7 @@ const int rocketLenght = 10;  // Rocket body Length
 const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
+const int buzPin = 8;         // Buzzer pin
 int y;                        // Rocket Y-coordinate
 int x = 8;                    // Rocket X-coordinate
 int pixX;                     // Pixel coordinate X
@@ -82,6 +83,18 @@ void drawFlame(int x,int y){
   }
  }
 
+// Music:
+void Ton(int friq,int tme){
+  tone(buzPin,friq);
+  delay(tme);
+  noTone(buzPin);
+  delay(tme);
+}
+void musicScore(){
+Ton(2000,100);
+Ton(2500,150);
+Ton(2000,100);
+}
 
   extern uint8_t SmallFont[];
  
