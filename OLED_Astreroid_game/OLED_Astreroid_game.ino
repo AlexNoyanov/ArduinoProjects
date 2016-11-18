@@ -13,7 +13,7 @@ const int rocketLenght = 10;  // Rocket body Length
 const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
-const int buzPin = 8;         // Buzzer pin
+const int buzPin = 9;         // Buzzer pin
 int y;                        // Rocket Y-coordinate
 int x = 8;                    // Rocket X-coordinate
 int pixX;                     // Pixel coordinate X
@@ -91,11 +91,16 @@ void Ton(int friq,int tme){
   delay(tme);
 }
 void musicScore(){
-Ton(2000,100);
-Ton(2500,150);
-Ton(2000,100);
+//Ton(100,10);
+Ton(800,10);
+//Ton(300,10);
 }
 
+void soundExplosion(){
+  for(int i = 1000;i<1500;i= i+100){
+    Ton(i,i/50);
+  }
+}
   extern uint8_t SmallFont[];
  
 void setup() {
@@ -135,10 +140,13 @@ astSpd = map(score,0,100,2,10 );
             Asteroid(i,astY);
             myOLED.update();
             myOLED.clrCircle(i, astY, astR);
+                    Ton(i*100,10);
            }
            Explosion(x,y);
         astY = random(astR,64-astR);
         astX = 128+astR;
+
+        //soundExplosion();
         delay(500);
         myOLED.print("GAME OVER ", 30, 20);
         if(score > record){
