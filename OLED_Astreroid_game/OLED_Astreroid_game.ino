@@ -9,11 +9,22 @@
 
 OLED  myOLED(SDA, SCL, 8);
 
+// Notes for music:
+#define NOTE_C6 1047
+#define NOTE_D6 1157
+#define NOTE_E6 1319
+#define NOTE_F6 1397
+#define NOTE_G6 1568
+#define NOTE_A6 1760
+#define NOTE_B6 1976
+#define NOTE_C7 2093
+
 const int rocketLenght = 10;  // Rocket body Length 
 const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
 const int buzPin = 9;         // Buzzer pin
+int buzzerPin = buzPin; //using digital pin 8
 int y;                        // Rocket Y-coordinate
 int x = 8;                    // Rocket X-coordinate
 int pixX;                     // Pixel coordinate X
@@ -35,6 +46,15 @@ int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
 int explosionR = 15;
+
+//  === TESTING ===
+const int ledPin =  13;      
+// Variables will change:
+int ledState = LOW;             
+long previousMillis = 0;        
+ 
+long interval = 100; 
+
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -84,12 +104,66 @@ void drawFlame(int x,int y){
  }
 
 // Music:
+//  Main music function:
 void Ton(int friq,int tme){
   tone(buzPin,friq);
   delay(tme);
   noTone(buzPin);
   delay(tme);
 }
+
+//  === MUSIC WITHOUT DELAYS ===
+void mainMusic(){
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_B6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_G6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_B6, 500);
+delay(200);
+RocketMenu();
+tone(buzzerPin, NOTE_C7, 500);
+delay(300);
+RocketMenu();
+tone(buzzerPin, NOTE_B6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_G6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_B6, 500);
+delay(200);
+RocketMenu();
+tone(buzzerPin, NOTE_C7, 500);
+delay(300);
+RocketMenu();
+tone(buzzerPin, NOTE_B6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_G6, 500);
+delay(500);
+RocketMenu();
+tone(buzzerPin, NOTE_A6, 500);
+delay(500);
+RocketMenu();
+}
+
 void musicScore(){
 //Ton(100,10);
 Ton(800,10);
@@ -102,13 +176,38 @@ void soundExplosion(){
   }
 }
   extern uint8_t SmallFont[];
+
+void RocketMenu(){
+  potValue = analogRead(A0);
+       drawRocket(10,10);
+       drawFlame(5,10);
+       myOLED.update();
+       myOLED.clrScr();
+}
+
+void Menu(){
+    myOLED.clrScr();
+    while(potValue < potValue+10 && potValue > potValue-10){
+    potValue = analogRead(A0);
+       drawRocket(10,10);
+       drawFlame(5,10);
+       myOLED.update();
+       mainMusic();
+  }
+}
  
 void setup() {
   // put your setup code here, to run once:
+
+//  === TESTING ===
+  pinMode(ledPin, OUTPUT);   
+  
   myOLED.begin();
   myOLED.setFont(SmallFont);
   analogWrite(A1,1023);
   analogWrite(A2,0);
+  potValue = analogRead(A0);
+  Menu();
 }
 
 void loop() {
@@ -119,6 +218,7 @@ void loop() {
    
    drawRocket(x,y);   // Drawing rocket
    drawFlame(x,y);
+
 
 astSpd = map(score,0,100,2,10 );
    
@@ -166,7 +266,6 @@ astSpd = map(score,0,100,2,10 );
 
    myOLED.printNumI(score, 30, 2); 
    myOLED.update();
-   
-   
-   //delay(10); // System delay
+
+
 }
