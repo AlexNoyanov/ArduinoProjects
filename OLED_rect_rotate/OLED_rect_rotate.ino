@@ -4,8 +4,8 @@
 OLED  myOLED(SDA, SCL, 8);
 
 float pi = 3.14159265359;
-int height = 28;  // Block Height
-int lenght = 14;  // Block Lenght
+int height = 20;  // Block Height
+int lenght = 20;  // Block Lenght
 float rad;      //
 float oneRad = 0.0174533; //
 
