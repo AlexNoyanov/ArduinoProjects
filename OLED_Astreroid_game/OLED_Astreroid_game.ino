@@ -2,9 +2,11 @@
 // Created by Alexander Noyanov
 // 18 10 2016
 
-// Connect OLED 
+// Connect OLED  SCL-> A5
+//               SDA-> A4
 
 // For help: alex.noyanov@gmail.com
+
 #include <OLED_I2C.h>
 
 OLED  myOLED(SDA, SCL, 8);
@@ -14,7 +16,7 @@ const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
 const int buzPin = 9;         // Buzzer pin
-int buzzerPin = buzPin; //using digital pin 8
+int buzzerPin = buzPin;       //using digital pin 8
 int y;                        // Rocket Y-coordinate
 int x = 8;                    // Rocket X-coordinate
 int pixX;                     // Pixel coordinate X
