@@ -10,7 +10,7 @@
 
 #include <Wire.h>
 #include "SSD1306.h" // alias for `#include "SSD1306Wire.h"`
-
+//#include "SSD1306Wire.h"
 SSD1306  display(0x3c, D1, D2);
 
 
