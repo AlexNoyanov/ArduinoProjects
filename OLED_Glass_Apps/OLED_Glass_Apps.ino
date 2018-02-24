@@ -3,8 +3,6 @@
 // 15 of February
 // 2017 
 
-// Comment from AlexPC2 
-
 #include <OLED_I2C.h>
 #include <OzOLED.h>
 OLED myOLED(SDA, SCL, 8);
