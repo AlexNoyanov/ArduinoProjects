@@ -16,14 +16,21 @@ void setup() {
   // put your setup code here, to run once:
   servoX.attach(8); // Connetcing servo to pin 8
   Serial.begin(9600); // Start serial port on 9600 bod
-  
+
+  Serial.write("=== Ready to read ===");
   
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  angleX = Serial.read();   // Read X angle
-
-  servoX.write(angleX);     // Rotate servo on angle
-  delay(500);               // Wait a litle bit
+ 
+  if(Serial.available() > 0){
+     angleX = Serial.read();   // Read X angle
+      
+    Serial.print("X Angle: ");
+    Serial.println(angleX);
+    servoX.write(angleX);     // Rotate servo on angle
+    
+    delay(500);               // Wait a litle bit
+  }
 }
