@@ -26,7 +26,7 @@ int inDec(int i){ // Function to get 10 in i degree
   return dec;
 }
 
-int ReadData2()
+int ReadData()
 {
   int v = 0;
   int mul = 1;
@@ -49,30 +49,24 @@ int ReadData2()
   Serial.println(v);
   return v;   
 }
-
+/*
 int ReadData()
 {    // Read data from serial port
    int i = 0;
-   
-   int value = 0;
-   
+   int value = 0; 
    // Read all symbols in array
     for(; Serial.available() ; i++){
       data[i] =  Serial.read();   // Read X angle
      }
-  
    int len = i;
    // Get normal numbers from symbols:
     for(int k = 0; k < len; k++) {
-
       i--;
       value = value + inDec(i)*(data[k]-'0');
-
      }
-      
-   
    return value;
 }
+*/
 
 void setup() {
   // put your setup code here, to run once:
@@ -93,7 +87,7 @@ void loop() {
     // Serial.println(angleX);
      Serial.println(" ");
 
-     angleX = ReadData2();
+     angleX = ReadData();
 
      // Print recieved data:
      Serial.print("Data: ");
