@@ -26,6 +26,7 @@ int inDec(int i){ // Function to get 10 in i degree
   return dec;
 }
 
+
 int ReadData()
 {
   int v = 0;
