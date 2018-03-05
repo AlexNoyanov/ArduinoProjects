@@ -96,6 +96,6 @@ void loop() {
 
      servoX.write(angleX);     // Rotate servo on angle
      
-    delay(500);               // Wait a litle bit
+    delay(100);                // Wait a litle bit
   }
 }
