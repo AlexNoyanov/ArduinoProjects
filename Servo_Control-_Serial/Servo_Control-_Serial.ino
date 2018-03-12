@@ -21,10 +21,12 @@ Servo servoY;   // Servo Y
 #define SIZE 32 // Array size
 char data[SIZE];  // Data array
 
-
 int data;       // Readed data
 int angleX;     // X angle
 int angleY;     // Y angle
+
+int xPin = 8;   // Servo X pin
+int yPin = 9;   // Servo Y pin 
 
 int inDec(int i){ // Function to get 10 in i degree
   int dec = 1;
@@ -58,6 +60,7 @@ int ReadData()
   Serial.println(v);
   return v;   
 }
+
 /*
 int ReadData()
 {    // Read data from serial port
@@ -79,7 +82,9 @@ int ReadData()
 
 void setup() {
   // put your setup code here, to run once:
-  servoX.attach(8); // Connetcing servo to pin 8
+  servoX.attach(xPin); // Connetcing servo X to pin 
+  servoY.attach(yPin); // Connetcing servo Y to pin 
+  
   Serial.begin(9600); // Start serial port on 9600 bod
 
   Serial.println("=== Ready to read ===");  // Print title 
