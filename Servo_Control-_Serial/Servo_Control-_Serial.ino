@@ -6,6 +6,13 @@
 // Created by Alex Noyanov 
 // The 26th of February 
 
+/* Input data format:
+  XXXXXX
+  |-| |-|
+    | |_Y-angle
+    |_X-angle
+*/
+    
 #include <Servo.h> // Library for servo
 
 Servo servoX;   // Servo X 
@@ -14,6 +21,8 @@ Servo servoY;   // Servo Y
 #define SIZE 32 // Array size
 char data[SIZE];  // Data array
 
+
+int data;       // Readed data
 int angleX;     // X angle
 int angleY;     // Y angle
 
@@ -25,7 +34,6 @@ int inDec(int i){ // Function to get 10 in i degree
   }
   return dec;
 }
-
 
 int ReadData()
 {
@@ -84,17 +92,24 @@ void loop() {
  
   if(Serial.available() > 0)
   {
-    // Serial.print("X Angle: ");
-    // Serial.println(angleX);
      Serial.println(" ");
 
-     angleX = ReadData();
+     data = ReadData();     // Read and convert data 
+
+     angleX = data/1000;
+     angleY = data%1000;
 
      // Print recieved data:
      Serial.print("Data: ");
-     Serial.print(angleX);
+     Serial.println(data);
+     Serial.print("X:");
+     Serial.println(angleX);
+     Serial.print("Y:");
+     Serial.println(angleY);
 
-     servoX.write(angleX);     // Rotate servo on angle
+     // Rotate servos on angle
+     servoX.write(angleX);     
+     servoY.write(angleY);   
      
     delay(100);                // Wait a litle bit
   }
