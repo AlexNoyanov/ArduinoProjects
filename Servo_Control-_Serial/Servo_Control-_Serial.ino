@@ -12,6 +12,7 @@
     | |_Y-angle
     |_X-angle
 */
+
     
 #include <Servo.h> // Library for servo
 
@@ -42,7 +43,9 @@ int ReadData()
   int v = 0;
   int mul = 1;
   // Read all symbols 
-  while(true) 
+  while(v != 'x')      // 'x' symbol stops the data reading 
+                       // All input data must be in this form:
+                       // <valueX>x<valueY>x   
   {
       if(Serial.available()) {
         int c = Serial.read(); 
