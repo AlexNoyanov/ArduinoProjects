@@ -31,6 +31,15 @@
 
   #include "images.h"
   
+// For DHT sensor:
+#include<dht.h>
+dht DHT;// For DHT sensor:
+
+#define DHTPIN 10 // DHT sensor pin
+
+int chk;  // dht sensor data
+int temp; // temperature
+int hum;  // humidity
 
 // Initialize the OLED display using Wire library
 SSD1306Wire  display(0x3c, D3, D4);
@@ -134,6 +143,17 @@ int remainingTimeBudget = ui.update();
     // You can do some work here
     // Don't do stuff if you are below your
     // time budget.
+
+    // Read data from the sensor:
+     chk = DHT.read11(DHTPIN);
+     
+     // === FOR SENSOR TESTING ===
+     Serial. print("Temp: ");
+     Serial.print(DHT.temperature);
+     Serial. print("            Hum: ");
+     Serial.println(DHT.humidity);
+
+    
     delay(remainingTimeBudget);
   }
 }
