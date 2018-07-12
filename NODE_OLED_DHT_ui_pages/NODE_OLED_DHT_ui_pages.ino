@@ -13,6 +13,7 @@
 //  SCL -> D2
 //  SDA -> D1
 
+// DHT pin -> SD3
  // By Alexander Noyanov
 
 // The 6th of June 2018
@@ -49,38 +50,48 @@ OLEDDisplayUi ui     ( &display );
 
 void msOverlay(OLEDDisplay *display, OLEDDisplayUiState* state) {
   display->setTextAlignment(TEXT_ALIGN_RIGHT);
-  display->setFont(ArialMT_Plain_10);
-  display->drawString(128, 0,"ov" );
+  //display->setFont(ArialMT_Plain_10);
+  //display->drawString(128, 0,"ov" );
 }
 
 // First page. Drawing temperature:
 void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
 
   // Read from sensor:
-  //int chk = readDHT(DHT_pin);
- // int chk = DHT.read11(DHT_pin);
-  //int temp = DHT.temperature;
-  //char tmp = temp;
+  int tmp = DHT.temperature;
+
+     //Serial. print("Temp: ");
+     //Serial.println(DHT.temperature);
+     
+  String myString = String(tmp);    // Converting 'int' in the 'string'
   
   display->setTextAlignment(TEXT_ALIGN_LEFT);
   display->setFont(ArialMT_Plain_16);
   display->drawString(0 + x, 5 + y, "Temperature"); // Arial 16 text
 
   display->setFont(ArialMT_Plain_24);
-//display->drawString(0 + x, 30 + y,tmp ); //   Arial 24 text
-  display->drawString(0 + x, 30 + y, "ºC"); //  Arial 24 text
+  display->drawString(0 + x, 30 + y,myString); //   Arial 24 text
+  display->drawString(0 + x, 30 + y, "    ºC"); //  Arial 24 text
 }
 
 // Second page. Drawing humidity from the sensor:
 void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
   // Demonstrates the 3 included default sizes. The fonts come from SSD1306Fonts.h file
   // Besides the default fonts there will be a program to convert TrueType fonts into this format
+
+   Serial. print("            Hum: ");
+    // Serial.println(DHT.humidity);
+  int hum = DHT.humidity;
+
+  String str = String(hum);
+  
   display->setTextAlignment(TEXT_ALIGN_LEFT);
   display->setFont(ArialMT_Plain_16);
   display->drawString(5 + x, 5 + y, "Humidity"); // Arial 16 text
 
   display->setFont(ArialMT_Plain_24);
-  display->drawString(5 + x, 20 + y, " 45%"); //  Arial 24 text
+  display->drawString(0 + x, 30 + y, str); //  Arial 24 text
+  display->drawString(0 + x, 30 + y, "    %"); //  Arial 24 text
 }
 
 // This array keeps function pointers to all frames
@@ -148,10 +159,10 @@ int remainingTimeBudget = ui.update();
      chk = DHT.read11(DHTPIN);
      
      // === FOR SENSOR TESTING ===
-     Serial. print("Temp: ");
-     Serial.print(DHT.temperature);
-     Serial. print("            Hum: ");
-     Serial.println(DHT.humidity);
+    // Serial. print("Temp: ");
+    // Serial.print(DHT.temperature);
+    // Serial. print("            Hum: ");
+    // Serial.println(DHT.humidity);
 
     
     delay(remainingTimeBudget);
