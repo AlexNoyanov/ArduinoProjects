@@ -4,37 +4,37 @@
 
 // DHT sensor connection:
 /*
- * 
- * 
- * 
- */
+
+
+
+*/
 
 // OLED connection:
 //  SCL -> D2
 //  SDA -> D1
 
- // By Alexander Noyanov
+// By Alexander Noyanov
 
 // The 6th of June 2018
 
 // Include the correct display library
- // For a connection via I2C using Wire include
-  #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
-  #include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
+// For a connection via I2C using Wire include
+#include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
+#include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
 // Include the UI lib
-  #include "OLEDDisplayUi.h"
-  // Include the symbols library%
-  #include "images.h" 
+#include "OLEDDisplayUi.h"
+// Include the symbols library%
+#include "images.h"
 
 // For dht sensor:
-  #include<dht.h>
-  dht DHT;
-  #define DHT_pin 10  // DHT sensor pin (SD3)
+#include<dht.h>
+dht DHT;
+#define DHT_pin 9  // DHT sensor pin (SD3)
 
 // Function to read the data from DHT sensor:
 //int readDHT(int pin){
-  //int data = DHT.read11(pin);  // Read data
- // return data;                 // Using this int we can know the temp and humd
+//int data = DHT.read11(pin);  // Read data
+// return data;                 // Using this int we can know the temp and humd
 //}
 
 // Initialize the OLED display using Wire library
@@ -61,7 +61,7 @@ void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   display->drawString(0 + x, 5 + y, "Temperature"); // Arial 16 text
 
   display->setFont(ArialMT_Plain_24);
-  display->drawString(0 + x, 30 + y,tmp ); //   Arial 24 text
+  display->drawString(0 + x, 30 + y, tmp ); //   Arial 24 text
   display->drawString(0 + x, 30 + y, "ºC"); //  Arial 24 text
 }
 
@@ -94,7 +94,7 @@ void setup() {
   Serial.println();
   Serial.println();
 
- // The ESP is capable of rendering 60fps in 80Mhz mode
+  // The ESP is capable of rendering 60fps in 80Mhz mode
   // but that won't give you much time for anything else
   // run it in 160Mhz mode or just set it to 30 fps
   ui.setTargetFPS(60);
@@ -118,7 +118,7 @@ void setup() {
   ui.setFrames(frames, frameCount);
 
   // Add overlays
- // ui.setOverlays(overlays, overlaysCount);
+  // ui.setOverlays(overlays, overlaysCount);
 
   // Initialising the UI will init the display too.
   ui.init();
@@ -130,7 +130,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-int remainingTimeBudget = ui.update();
+  int remainingTimeBudget = ui.update();
 
   if (remainingTimeBudget > 0) {
     // You can do some work here
