@@ -18,6 +18,7 @@
 // The 6th of June 2018
 
 // Include the correct display library
+<<<<<<< HEAD
 // For a connection via I2C using Wire include
 #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
 #include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
@@ -36,8 +37,32 @@ dht DHT;
 //int data = DHT.read11(pin);  // Read data
 // return data;                 // Using this int we can know the temp and humd
 //}
+=======
+ // For a connection via I2C using Wire include
 
-// Initialize the OLED display using Wire library
+
+// main code from the different modules:
+  #include"Pages.h" // For pages
+    #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
+  #include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
+  // Include the UI lib
+  #include "OLEDDisplayUi.h"
+  // Include the symbols library%
+  #include "images.h" 
+  #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
+  #include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
+  // Include the UI lib
+  #include "OLEDDisplayUi.h"
+  // Include the symbols library%
+  #include "images.h" 
+
+// For dht sensor:
+ // #include<dht.h>
+ // dht DHT;
+ // #define DHT_pin 10  // DHT sensor pin (SD3)
+>>>>>>> 1c60ca5261b14cf71863388fa2a09a890cb24909
+
+  // Initialize the OLED display using Wire library
 SSD1306Wire  display(0x3c, D3, D4);
 
 OLEDDisplayUi ui     ( &display );
@@ -61,7 +86,60 @@ void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   display->drawString(0 + x, 5 + y, "Temperature"); // Arial 16 text
 
   display->setFont(ArialMT_Plain_24);
+<<<<<<< HEAD
   display->drawString(0 + x, 30 + y, tmp ); //   Arial 24 text
+=======
+//display->drawString(0 + x, 30 + y,tmp ); //   Arial 24 text
+>>>>>>> 1c60ca5261b14cf71863388fa2a09a890cb24909
+  display->drawString(0 + x, 30 + y, "ºC"); //  Arial 24 text
+}
+
+// Second page. Drawing humidity from the sensor:
+void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+  // Demonstrates the 3 included default sizes. The fonts come from SSD1306Fonts.h file
+  // Besides the default fonts there will be a program to convert TrueType fonts into this format
+  display->setTextAlignment(TEXT_ALIGN_LEFT);
+  display->setFont(ArialMT_Plain_16);
+  display->drawString(5 + x, 5 + y, "Humidity"); // Arial 16 text
+
+  display->setFont(ArialMT_Plain_24);
+  display->drawString(5 + x, 20 + y, " 45%"); //  Arial 24 text
+}
+
+// This array keeps function pointers to all frames
+// frames are the single views that slide in
+FrameCallback frames[] = { drawFrame1, drawFrame2 };
+
+// how many frames are there?
+int frameCount = 2;
+
+// Overlays are statically drawn on top of a frame eg. a clock
+OverlayCallback overlays[] = { msOverlay };
+int overlaysCount = 1;  // Initialize the OLED display using Wire library
+SSD1306Wire  display(0x3c, D3, D4);
+
+OLEDDisplayUi ui     ( &display );
+
+void msOverlay(OLEDDisplay *display, OLEDDisplayUiState* state) {
+  display->setTextAlignment(TEXT_ALIGN_RIGHT);
+  display->setFont(ArialMT_Plain_10);
+  display->drawString(128, 0, String(millis()));
+}
+
+// First page. Drawing temperature:
+void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+
+  // Read from sensor:
+  //int chk = readDHT(DHT_pin);
+  int chk = DHT.read11(DHT_pin);
+  int temp = DHT.temperature;
+  char tmp = temp;
+  display->setTextAlignment(TEXT_ALIGN_LEFT);
+  display->setFont(ArialMT_Plain_16);
+  display->drawString(0 + x, 5 + y, "Temperature"); // Arial 16 text
+
+  display->setFont(ArialMT_Plain_24);
+//display->drawString(0 + x, 30 + y,tmp ); //   Arial 24 text
   display->drawString(0 + x, 30 + y, "ºC"); //  Arial 24 text
 }
 
@@ -87,8 +165,6 @@ int frameCount = 2;
 // Overlays are statically drawn on top of a frame eg. a clock
 OverlayCallback overlays[] = { msOverlay };
 int overlaysCount = 1;
-
-
 void setup() {
   Serial.begin(115200);
   Serial.println();
