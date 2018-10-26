@@ -17,10 +17,10 @@
 #include "WProgram.h"
 #endif
 
-    void FWD();
-    void BCK();
-    void STP();
-    void LFT();
-    void RGT();
+void FWD();
+void BCK();
+void STP();
+void LFT();
+void RGT();
 
 #endif /* defined(____Car__) */
