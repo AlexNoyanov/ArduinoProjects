@@ -21,8 +21,8 @@
 Screen myScreen;
 
 // Calibration X and Y 
-Calibrator calibratorX(12);  // X-axis button on this pin
-Calibrator calibratorY(13);  // Y-axis button on this pin
+Calibrator calibratorX(12);  // X-axis button on this pin (12)
+Calibrator calibratorY(13);  // Y-axis button on this pin (13)
 
 // Servo position for Up and Down 
 const int penZUp = 5;
@@ -232,8 +232,11 @@ void processIncomingLine( char* line, int charNB ) {
   //  Discard anything with a (
   //  Discard any other command!
 
+  //  A - Auto calibration mode  
+
   while( currentIndex < charNB ) {
     switch ( line[ currentIndex++ ] ) {              // Select command, if any
+      
     case 'A':                                        // Autocalibration
     calibratorX.autoCalibrate(myStepperX);
     calibratorY.autoCalibrate(myStepperY);
