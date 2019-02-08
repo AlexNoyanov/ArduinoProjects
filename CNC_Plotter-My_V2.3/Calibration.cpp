@@ -38,9 +38,16 @@ void Calibrator::moveZero(Stepper motor)                            // Keep movi
 
 void Calibrator::autoCalibrate(Stepper motor)                       // Final method - Autocalibration
 {
-    while(buttonStatus() == true)                                   // Move motor and stop when it press the button
+    int delayTime = 5000;                                           // Max delay time to move the motor
+    int timer = 0;
+    int timeStep = 1;                                               // Delay step for timer
+    
+    while(buttonStatus() == true && timer != delayTime)             // Move motor and stop when it press the button
     {
         moveZero(motor);
+        
+        delay(timeStep);                                             // This timer will stop the motor if there is  no button
+        timer += timeStep;
     }
     
 }
