@@ -87,7 +87,7 @@ void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   // Please note that everything that should be transitioned
   // needs to be drawn relative to x and y
 
-  display->drawXbm(x + 34, y + 14, WiFi_Logo_width, WiFi_Logo_height, WiFi_Logo_bits);
+  display->drawXbm(x + 34, y + 14, Inst_Logo_width, Inst_Logo_height, Inst_Logo_bits);
 }
 
 void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
@@ -131,7 +131,7 @@ void drawFrame4(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
 }
 
 void drawFrame5(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
-  display->drawXbm(x + 34, y + 14, Inst_Logo_width, Inst_Logo_height, Inst_Logo_bits);
+//  display->drawXbm(x + 34, y + 14, Inst_Logo_width, Inst_Logo_height, Inst_Logo_bits);
 }
 
 // This array keeps function pointers to all frames
