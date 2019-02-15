@@ -82,29 +82,29 @@ void msOverlay(OLEDDisplay *display, OLEDDisplayUiState* state) {
   display->drawString(128, 0, String(millis()));
 }
 
-void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {        // First page
   // draw an xbm image.
   // Please note that everything that should be transitioned
   // needs to be drawn relative to x and y
 
-  display->drawXbm(x + 34, y + 14, Inst_Logo_width, Inst_Logo_height, Inst_Logo_bits);
+  display->drawXbm(x + 34, y + 14, WiFi_Logo_width, WiFi_Logo_height, AlexGit);
 }
 
-void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {         // Second page
   // Demonstrates the 3 included default sizes. The fonts come from SSD1306Fonts.h file
   // Besides the default fonts there will be a program to convert TrueType fonts into this format
   display->setTextAlignment(TEXT_ALIGN_LEFT);
-  display->setFont(ArialMT_Plain_10);
-  display->drawString(0 + x, 10 + y, "Arial 10");
-
-  display->setFont(ArialMT_Plain_16);
-  display->drawString(0 + x, 20 + y, "Arial 16");
+  //display->setFont(ArialMT_Plain_10);
+  //display->drawString(0 + x, 10 + y, "You got");
 
   display->setFont(ArialMT_Plain_24);
-  display->drawString(0 + x, 34 + y, "Arial 24");
+  display->drawString(40 + x, 10 + y, "578");
+
+  display->setFont(ArialMT_Plain_24);
+  display->drawString(0 + x, 30 + y, "Subscribers");
 }
 
-void drawFrame3(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+void drawFrame3(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {        // Third page 
   // Text alignment demo
   display->setFont(ArialMT_Plain_10);
 
@@ -121,7 +121,7 @@ void drawFrame3(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   display->drawString(128 + x, 33 + y, "Right aligned (128,33)");
 }
 
-void drawFrame4(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+void drawFrame4(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {      // Four page
   // Demo for drawStringMaxWidth:
   // with the third parameter you can define the width after which words will be wrapped.
   // Currently only spaces and "-" are allowed for wrapping
@@ -130,7 +130,7 @@ void drawFrame4(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   display->drawStringMaxWidth(0 + x, 10 + y, 128, "Lorem ipsum\n dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.");
 }
 
-void drawFrame5(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {
+void drawFrame5(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {          // Fifth page
 //  display->drawXbm(x + 34, y + 14, Inst_Logo_width, Inst_Logo_height, Inst_Logo_bits);
 }
 
