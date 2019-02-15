@@ -87,7 +87,7 @@ void drawFrame1(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int1
   // Please note that everything that should be transitioned
   // needs to be drawn relative to x and y
 
-  display->drawXbm(x + 34, y + 14, WiFi_Logo_width, WiFi_Logo_height, AlexGit);
+  display->drawXbm(x + 34, y + 14, WiFi_Logo_width, WiFi_Logo_height, Alex_git_logo);
 }
 
 void drawFrame2(OLEDDisplay *display, OLEDDisplayUiState* state, int16_t x, int16_t y) {         // Second page
