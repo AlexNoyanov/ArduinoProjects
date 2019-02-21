@@ -33,6 +33,8 @@ void WIFI_Connector::SerialData()
 
 bool WIFI_Connector::begin()
 {
+
+  
  return 0;   
 }
 
