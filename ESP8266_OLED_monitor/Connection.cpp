@@ -33,7 +33,11 @@ void WIFI_Connector::SerialData()
 
 bool WIFI_Connector::begin()
 {
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 6a88efe6918286f3ca05ad9d55515699b664f16d
   
  return 0;   
 }
