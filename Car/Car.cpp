@@ -16,9 +16,8 @@ int lbk  = 5;   // Left motor moves back
 int rfwd = 4;   // Right motor moves forward
 int rbk  = 6;   // Right motor moves back
 
-//  Main Functions:
-
-void STP(int tme){          // Stop
+//  Main Functions to car movement:
+void STP(int tme){              // Stop
     digitalWrite(rbk,HIGH);
     digitalWrite(lbk,HIGH);
     digitalWrite(rfwd,HIGH);
@@ -26,7 +25,7 @@ void STP(int tme){          // Stop
     delay(tme);
 }
 
-void FWD(int tme){          // Forward
+void FWD(int tme){              // Forward
     digitalWrite(rfwd,LOW);
     digitalWrite(lfwd,LOW);
     delay(spd);
@@ -34,7 +33,8 @@ void FWD(int tme){          // Forward
     digitalWrite(lfwd,HIGH);
     delay(tme);
 }
-void BCK(int tme){          // Back
+
+void BCK(int tme){              // Back
     digitalWrite(rbk,LOW);
     digitalWrite(lbk,LOW);
     delay(spd);
@@ -42,7 +42,8 @@ void BCK(int tme){          // Back
     digitalWrite(lbk,HIGH);
     delay(tme);
 }
-void LFT(int tme){          // Left
+
+void LFT(int tme){              // Left
     digitalWrite(lbk,LOW);
     digitalWrite(rfwd,LOW);
     delay(spd);
@@ -50,7 +51,8 @@ void LFT(int tme){          // Left
     digitalWrite(rfwd,HIGH);
     delay(tme);
 }
-void RGT(int tme){          // Right
+
+void RGT(int tme){              // Right
     digitalWrite(rbk,LOW);
     digitalWrite(lfwd,LOW);
     delay(spd);
@@ -58,3 +60,4 @@ void RGT(int tme){          // Right
     digitalWrite(lfwd,HIGH);
     delay(int tme);
 }
+
