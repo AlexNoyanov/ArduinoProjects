@@ -16,7 +16,7 @@
 // Features to update: 
 /*
  * - Add three lifes
- * - Add main menu 
+ * - Add main menu      (Done! Feb 29 2020)
  * - Add musci theme 
  * 
  * 
@@ -57,6 +57,8 @@ int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
 int explosionR = 15;  // Radius of rocket explosion
+bool gameMode = false;
+int potPin = A0;      // Potenciometer pin
 
 //  === TESTING ===
 const int ledPin =  13;      
@@ -137,12 +139,49 @@ void soundExplosion(){
 
 // Creating main Game Menu:
 void drawMainMenu(){
+  myOLED.clrScr();
+  myOLED.print("==ASTEROID GAME==", 10, 20);
+  myOLED.print("(move pot to start)", 10, 50);
+  drawRocket(10,40);
+  drawFlame(10,40);
+  myOLED.update();
+}
+void menuStartAnimation(){      // Menu animation
+  int x = 10;
+  int y = 20;
+  for(int j = y; j > -10; j--){
+    //myOLED.clrScr();
+    myOLED.print("==ASTEROID GAME==", x, j);
+    myOLED.print("(move pot to start)", x, 70-j); 
+    //delay(100); 
+    myOLED.update();  
+  }
   
+}
+
+void menu(int pPin){
+  int potValue = analogRead(potPin);  
+  int lastPotValue = 0;
+  int dif = 900;        // Pot sensivity for starting the game
+  while((potValue - lastPotValue) < dif){   // Drawing game menu while no response from pot:
+    drawMainMenu();
+    for(int i = 0; i < 100; i++){
+    potValue = analogRead(pPin);
+    delay(1);  
+    lastPotValue +=potValue;
+    }
+    lastPotValue = lastPotValue/100;
+  }
+  // Starting the game when exit:
+  menuStartAnimation();           // And launching nice menu animation
+  gameMode = true;              
+ 
 }
 
 // Drawing number of hearts:
 void drawLifeStatus(int n){
- myOLED.print("♥", 60, 5);
+  
+ // myOLED.print("♥", 60, 5);   // Not working
   //"♥"
 }
  
@@ -152,21 +191,26 @@ void setup() {
   myOLED.setFont(SmallFont);
   analogWrite(A1,1023);
   analogWrite(A2,0);
-  potValue = analogRead(A0);
+  potValue = analogRead(potPin);
+
+// Printing menu and waiting for start:
+
+  
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   //TimedAction musicThread = TimedAction(700,incrementNumber);
+  
+  if(gameMode){                       // Playing game or printing menu:
    myOLED.clrScr();
-   potValue = analogRead(A0);
+   potValue = analogRead(potPin);
    y = map(potValue,0,1023,4,64-rocketHight-4);
    
    drawRocket(x,y);   // Drawing rocket
    drawFlame(x,y);
 
-
-astSpd = map(score,0,100,2,10 );
+    astSpd = map(score,0,100,2,10 );  // Asteroids speed increasing 
    
    // Moving the Asteroid:
     if(astX > 0-astR){
@@ -208,10 +252,17 @@ astSpd = map(score,0,100,2,10 );
         score = 0;
         myOLED.update();
         delay(2000);
+        gameMode = false;       // Exiting the game to the menu
        }
    drawLifeStatus(3);
-   myOLED.printNumI(score, 30, 2); 
+   
+   myOLED.printNumI(score, 30, 2);  // Drawing score
+   myOLED.printNumI(astSpd, 60,2);   // Drawing asteroids speed
    myOLED.update();
-
+  }else{
+    // If not playing the game print Main Menu:
+    menu(potPin);
+    //myOLED.update(); 
+  }
 
 }
