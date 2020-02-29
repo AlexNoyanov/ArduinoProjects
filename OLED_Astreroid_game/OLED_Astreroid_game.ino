@@ -5,7 +5,26 @@
 // Connect OLED  SCL-> A5
 //               SDA-> A4
 
+// Potenciometer to A0
+
 // For help: alex.noyanov@gmail.com
+
+// Version 1.5 Working
+
+// Multithreading music update Feb 27 2020
+
+// Features to update: 
+/*
+ * - Add three lifes
+ * - Add main menu 
+ * - Add musci theme 
+ * 
+ * 
+ */
+
+// Testing Multithreading for music:
+//#include <TimedAction.h>
+
 
 #include <OLED_I2C.h>
 
@@ -16,15 +35,15 @@ const int rocketHight = 5;    // Rocket body Hight
 const int maxX = 128;         // Maximum X-value
 const int maxY = 64;          // Maximum Y-value
 const int buzPin = 9;         // Buzzer pin
-int buzzerPin = buzPin;       //using digital pin 8
+int buzzerPin = buzPin;       // using digital pin 8 or 9
 int y;                        // Rocket Y-coordinate
 int x = 8;                    // Rocket X-coordinate
 int pixX;                     // Pixel coordinate X
 int pixY;                     // Pixel coordinate Y
 int flameR = 8;               // Flame radius  
 int potValue;
-int intensFire = 10;    // Fire pixel concentration 
-int astR = 5;           // Asteroid radius 
+int intensFire = 10;          // Fire pixel concentration 
+int astR = 5;                 // Asteroid radius 
 int minastR = 2;
 int maxastR = 10;
 const int astPixConcent = 20; // Pixels concentration inside the asteroid
@@ -37,7 +56,7 @@ int record = 0;      // Game record
 int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;
-int explosionR = 15;
+int explosionR = 15;  // Radius of rocket explosion
 
 //  === TESTING ===
 const int ledPin =  13;      
@@ -46,7 +65,6 @@ int ledState = LOW;
 long previousMillis = 0;        
  
 long interval = 100; 
-
 
 // Function for drawing rocket:
 void drawRocket(int x,int y){
@@ -59,7 +77,7 @@ void drawRocket(int x,int y){
   myOLED.drawLine(x,y,x-2,y-4);
   //myOLED.drawCircle(x+2,y+2,2);
 }
-
+// Drawing rocket flame:
 void drawFlame(int x,int y){
   for(int i = 0;i<= intensFire; i++){
   pixX = random(x-flameR,x);
@@ -106,8 +124,8 @@ void Ton(int friq,int tme){
 
 void musicScore(){
 //Ton(100,10);
-Ton(800,10);
-//Ton(300,10);
+Ton(2800,10);
+Ton(2300,10);
 }
 
 void soundExplosion(){
@@ -117,7 +135,16 @@ void soundExplosion(){
 }
   extern uint8_t SmallFont[];
 
+// Creating main Game Menu:
+void drawMainMenu(){
+  
+}
 
+// Drawing number of hearts:
+void drawLifeStatus(int n){
+ myOLED.print("♥", 60, 5);
+  //"♥"
+}
  
 void setup() {
   // put your setup code here, to run once:
@@ -130,6 +157,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  //TimedAction musicThread = TimedAction(700,incrementNumber);
    myOLED.clrScr();
    potValue = analogRead(A0);
    y = map(potValue,0,1023,4,64-rocketHight-4);
@@ -181,7 +209,7 @@ astSpd = map(score,0,100,2,10 );
         myOLED.update();
         delay(2000);
        }
-
+   drawLifeStatus(3);
    myOLED.printNumI(score, 30, 2); 
    myOLED.update();
 
