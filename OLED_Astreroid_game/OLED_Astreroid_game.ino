@@ -1,6 +1,8 @@
 //  Arduino Asteroid Game with OLED display
-// Created by Alexander Noyanov
-// 18 10 2016
+//    Created by Alexander Noyanov
+//    18 10 2016
+
+// 
 
 // Connect OLED  SCL-> A5
 //               SDA-> A4
@@ -15,10 +17,10 @@
 
 // Features to update: 
 /*
- * - Add three lifes
+ * - Add three lifes 
  * - Add main menu      (Done! Feb 29 2020)
- * - Add musci theme 
- * 
+ * - Add music theme 
+ * - Add bonuses and weapons
  * 
  */
 
@@ -138,33 +140,35 @@ void soundExplosion(){
   extern uint8_t SmallFont[];
 
 // Creating main Game Menu:
-void drawMainMenu(){
+void drawMainMenu(int mxScr){
   myOLED.clrScr();
-  myOLED.print("==ASTEROID GAME==", 10, 20);
+  myOLED.print("<--ASTEROID GAME-->", 10, 20);
+  myOLED.printNumI(mxScr, 90, 35);
   myOLED.print("(move pot to start)", 10, 50);
-  drawRocket(10,40);
-  drawFlame(10,40);
+  drawRocket(40,35);
+  drawFlame(40,35);
   myOLED.update();
 }
-void menuStartAnimation(){      // Menu animation
+
+void menuStartAnimation(){                // Menu start animation
   int x = 10;
   int y = 20;
   for(int j = y; j > -10; j--){
-    //myOLED.clrScr();
-    myOLED.print("==ASTEROID GAME==", x, j);
+    myOLED.clrScr();
+    myOLED.print("<--ASTEROID GAME-->", x, j);
     myOLED.print("(move pot to start)", x, 70-j); 
     //delay(100); 
     myOLED.update();  
   }
-  
 }
 
-void menu(int pPin){
+void menu(int pPin, int maxScr){            // Main menu
   int potValue = analogRead(potPin);  
   int lastPotValue = 0;
-  int dif = 900;        // Pot sensivity for starting the game
+  int dif = 900;                            // Pot sensivity for starting the game
+ 
   while((potValue - lastPotValue) < dif){   // Drawing game menu while no response from pot:
-    drawMainMenu();
+    drawMainMenu(maxScr);
     for(int i = 0; i < 100; i++){
     potValue = analogRead(pPin);
     delay(1);  
@@ -182,7 +186,7 @@ void menu(int pPin){
 void drawLifeStatus(int n){
   
  // myOLED.print("♥", 60, 5);   // Not working
-  //"♥"
+ //"♥"
 }
  
 void setup() {
@@ -261,7 +265,7 @@ void loop() {
    myOLED.update();
   }else{
     // If not playing the game print Main Menu:
-    menu(potPin);
+    menu(potPin, record);
     //myOLED.update(); 
   }
 
