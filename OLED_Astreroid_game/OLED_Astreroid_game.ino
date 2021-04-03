@@ -52,9 +52,9 @@ const int astPixConcent = 20; // Pixels concentration inside the asteroid
 int rOut = 5;
 int astX ;
 int astY ;           
-int astSpd = 2;      // Asteroid speed
-int score = 0;       // Game score
-int record = 0;      // Game record 
+int astSpd = 2;      //  Asteroid speed
+int score = 0;       //  Game score
+int record = 0;      //  Game record 
 int pixExpX;         //  Explosion coordinate X
 int pixExpY;         //  Explsion coordinate Y
 int explosionIntetsivity = 10;

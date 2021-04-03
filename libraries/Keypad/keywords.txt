@@ -1,0 +1,21 @@
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Keypad		KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+SELECT		KEYWORD2
+UP	       KEYWORD2
+DOWN	       KEYWORD2
+RIGHT	       KEYWORD2
+LEFT	       KEYWORD2
+ReadButtons    KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+ReadButtons LITERAL1

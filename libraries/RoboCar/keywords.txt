@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For Car
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RoboCar 	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+On 	KEYWORD2
+	 KEYWORD2
+goForward 	KEYWORD2
+goBack 	KEYWORD2
+turnLeft 	KEYWORD2
+turnRight	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
